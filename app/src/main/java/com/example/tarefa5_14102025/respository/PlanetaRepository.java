@@ -1,6 +1,6 @@
 package com.example.tarefa5_14102025.respository;
 
-import com.example.tarefa5_14102025.ItemPlanetaLista;
+import com.example.tarefa5_14102025.model.ItemPlanetaLista;
 import com.example.tarefa5_14102025.R;
 
 import java.util.ArrayList;

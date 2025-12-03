@@ -1,4 +1,4 @@
-package com.example.tarefa5_14102025;
+package com.example.tarefa5_14102025.model;
 
 import java.io.Serializable;
 

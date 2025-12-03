@@ -5,23 +5,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tarefa5_14102025.ItemPlanetaLista;
-import com.example.tarefa5_14102025.ListaPlanetaAdapter;
+import com.example.tarefa5_14102025.model.ItemPlanetaLista;
+import com.example.tarefa5_14102025.adapter.ListaPlanetaAdapter;
 import com.example.tarefa5_14102025.R;
 import com.example.tarefa5_14102025.respository.PlanetaRepository;
 
 import java.util.List;
 
-public class ListaPlanetaFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class ListaPlanetaFragment extends Fragment {
 
-    private ListView listView;
+    private RecyclerView listView;
     private ListaPlanetaAdapter adapter;
 
     @Nullable
@@ -35,16 +36,21 @@ public class ListaPlanetaFragment extends Fragment implements AdapterView.OnItem
         super.onViewCreated(view, savedInstanceState);
 
         listView = view.findViewById(R.id.listViewPlaneta);
+        listView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         List<ItemPlanetaLista> itens = PlanetaRepository.all();
-        adapter = new ListaPlanetaAdapter(getContext(), itens);
+
+        adapter = new ListaPlanetaAdapter(getContext(), itens, new ListaPlanetaAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(ItemPlanetaLista item) {
+                onCLickPlaneta(item);
+            }
+        });
+
         listView.setAdapter(adapter);
-        listView.setOnItemClickListener(this);
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        ItemPlanetaLista itemSelecionado = (ItemPlanetaLista) parent.getItemAtPosition(position);
-
+    public void onCLickPlaneta(ItemPlanetaLista itemSelecionado) {
         CalculadoraGravidadeFragment fragmentCalc = new CalculadoraGravidadeFragment();
 
         Bundle args = new Bundle();

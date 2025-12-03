@@ -17,7 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.tarefa5_14102025.CalculadoraPesoGravidade;
-import com.example.tarefa5_14102025.ItemPlanetaLista;
+import com.example.tarefa5_14102025.model.ItemPlanetaLista;
 import com.example.tarefa5_14102025.R;
 
 public class CalculadoraGravidadeFragment extends Fragment {
