@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.tarefa5_14102025.fragment.ListaPlanetaFragment;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

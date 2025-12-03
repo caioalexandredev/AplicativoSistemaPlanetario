@@ -1,4 +1,4 @@
-package com.example.tarefa5_14102025;
+package com.example.tarefa5_14102025.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.tarefa5_14102025.ItemPlanetaLista;
+import com.example.tarefa5_14102025.ListaPlanetaAdapter;
+import com.example.tarefa5_14102025.R;
 import com.example.tarefa5_14102025.respository.PlanetaRepository;
 
 import java.util.List;

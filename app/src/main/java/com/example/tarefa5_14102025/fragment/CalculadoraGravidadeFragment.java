@@ -1,4 +1,4 @@
-package com.example.tarefa5_14102025;
+package com.example.tarefa5_14102025.fragment;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +15,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.tarefa5_14102025.CalculadoraPesoGravidade;
+import com.example.tarefa5_14102025.ItemPlanetaLista;
+import com.example.tarefa5_14102025.R;
 
 public class CalculadoraGravidadeFragment extends Fragment {
 
