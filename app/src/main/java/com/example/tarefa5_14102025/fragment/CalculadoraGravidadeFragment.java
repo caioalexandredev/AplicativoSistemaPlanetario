@@ -30,7 +30,7 @@ public class CalculadoraGravidadeFragment extends Fragment {
     private ItemPlanetaLista item;
     private TextView textViewPlanetaActivity, textViewPlanetaGravidadeActivity, textViewResultado;
     private ImageView imageViewPlanetaActivity;
-    private EditText editTextPeso;
+    private EditText editTextPeso, editTextNomeUsuario;
     private Button buttonCalcularPeso;
     private ProgressBar progressBar;
     private int progress = 0;
@@ -54,6 +54,7 @@ public class CalculadoraGravidadeFragment extends Fragment {
         textViewResultado = view.findViewById(R.id.textViewResultado);
         progressBar = view.findViewById(R.id.progressBar);
         editTextPeso = view.findViewById(R.id.editTextPeso);
+        editTextNomeUsuario = view.findViewById(R.id.editTextNomeUsuario);
 
         if (getArguments() != null) {
             item = (ItemPlanetaLista) getArguments().getSerializable("item");
@@ -101,7 +102,7 @@ public class CalculadoraGravidadeFragment extends Fragment {
                                     textViewResultado.setText("Peso: " + resultado + " Newtons");
 
                                     CalculoPlaneta cp = new CalculoPlaneta();
-                                    cp.setNome("");
+                                    cp.setNome(editTextNomeUsuario.getText().toString());
                                     cp.setMassa(massa);
                                     cp.setPesoCalculador(resultado);
                                     cp.setNomePlaneta(item.getNome());

@@ -13,4 +13,6 @@
     <string name="distancia_sol_terra">Distância: 149,6 milhões de quilômetros</string>
     <string name="temperatura_media_lua">Temperatura Média: -184 A 214 °C</string>
     <string name="distancia_lua_terra">Distância: 384.400 km</string>
+    <string name="digite_seu_nome">Digite seu nome</string>
+    <string name="nome">Nome</string>
 </resources>
