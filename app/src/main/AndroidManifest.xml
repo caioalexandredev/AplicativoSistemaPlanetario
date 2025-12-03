@@ -15,9 +15,6 @@
             android:name=".DistanciaTemperaturaCorpo"
             android:exported="false" />
         <activity
-            android:name=".CalculadoraGravidadeActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
