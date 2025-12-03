@@ -11,14 +11,19 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.room.Room;
 
 import com.example.tarefa5_14102025.CalculadoraPesoGravidade;
+import com.example.tarefa5_14102025.database.Banco;
+import com.example.tarefa5_14102025.model.CalculoPlaneta;
 import com.example.tarefa5_14102025.model.ItemPlanetaLista;
 import com.example.tarefa5_14102025.R;
+import com.example.tarefa5_14102025.model.dao.CalculoPlanetaDao;
 
 public class CalculadoraGravidadeFragment extends Fragment {
 
@@ -29,6 +34,8 @@ public class CalculadoraGravidadeFragment extends Fragment {
     private Button buttonCalcularPeso;
     private ProgressBar progressBar;
     private int progress = 0;
+    private CalculoPlanetaDao dao;
+
 
     @Nullable
     @Override
@@ -64,6 +71,11 @@ public class CalculadoraGravidadeFragment extends Fragment {
                 executarProgressBar();
             }
         });
+
+        Banco db = Room.databaseBuilder(getContext().getApplicationContext(), Banco.class, "meu_banco")
+                .allowMainThreadQueries().build();
+
+        dao = db.calculoPlanetaDao();
     }
 
     private void executarProgressBar() {
@@ -85,7 +97,16 @@ public class CalculadoraGravidadeFragment extends Fragment {
                                 if(!editTextPeso.getText().toString().isEmpty()){
                                     double massa = Double.parseDouble(editTextPeso.getText().toString());
                                     CalculadoraPesoGravidade calc = new CalculadoraPesoGravidade(massa, item.getGravidade());
-                                    textViewResultado.setText("Peso: " + calc.calcularPesoEmNewtons() + " Newtons");
+                                    double resultado = calc.calcularPesoEmNewtons();
+                                    textViewResultado.setText("Peso: " + resultado + " Newtons");
+
+                                    CalculoPlaneta cp = new CalculoPlaneta();
+                                    cp.setNome("");
+                                    cp.setMassa(massa);
+                                    cp.setPesoCalculador(resultado);
+                                    cp.setNomePlaneta(item.getNome());
+
+                                    salvarCalculo(cp);
                                 }
                             }
                         }
@@ -99,5 +120,16 @@ public class CalculadoraGravidadeFragment extends Fragment {
                 }
             }
         }).start();
+    }
+
+    public void salvarCalculo(CalculoPlaneta calculoPlaneta){
+        long retorno = dao.adicionar(calculoPlaneta);
+
+        if(retorno != -1){
+            Toast.makeText(getContext(), "dados salvos!!!", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(getContext(), "erro ao salvar", Toast.LENGTH_SHORT).show();
+        }
     }
 }
