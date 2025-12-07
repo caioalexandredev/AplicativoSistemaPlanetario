@@ -1,4 +1,4 @@
-package com.example.tarefa5_14102025;
+package com.example.tarefa5_14102025.service;
 
 public class CalculadoraPesoGravidade {
     double massaKg;

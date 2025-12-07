@@ -18,7 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.room.Room;
 
-import com.example.tarefa5_14102025.CalculadoraPesoGravidade;
+import com.example.tarefa5_14102025.service.CalculadoraPesoGravidade;
 import com.example.tarefa5_14102025.database.Banco;
 import com.example.tarefa5_14102025.model.CalculoPlaneta;
 import com.example.tarefa5_14102025.model.ItemPlanetaLista;
